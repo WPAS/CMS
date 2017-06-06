@@ -1,3 +1,8 @@
+cms:
+    resource: "@CMSBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 users: 
   type: rest
-  resource: AppBundle\Controller\DefaultController
+  resource: CMSBundle\Controller\ArticleController
