@@ -11,7 +11,9 @@ class ArticleController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
         $articles = $repository->findAll();
         
-        $view = $this->view($articles, 200);  
-	return $this->handleView($view);        
+        $view = $this->view($articles, 200);
+        $response = $this->handleView($view);
+        $response->headers->set('Access-Control-Allow-Origin', '*');  
+        return $response;
     }
 }
