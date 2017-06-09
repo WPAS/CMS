@@ -43,9 +43,9 @@ class Article
     private $author;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="string")
      */
     private $date;
 
@@ -135,7 +135,7 @@ class Article
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param string $date
      *
      * @return Article
      */
@@ -149,7 +149,7 @@ class Article
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDate()
     {
