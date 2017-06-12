@@ -1,4 +1,4 @@
 cms
 ===
 
-A Symfony project created on May 28, 2017, 12:23 pm.
+REST API for simple website created with Symfony 3 and FOSRestBundle. API is used by website that I build in React.js => https://github.com/WPAS/CMSF
