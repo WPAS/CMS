@@ -10,4 +10,24 @@ namespace CMSBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function get20FromNewest()
+    {
+   	$query = $this->getEntityManager()->createQuery(
+		'SELECT a FROM CMSBundle:Article a ORDER BY a.id DESC');
+        
+        $articles = $query->setMaxResults(20)->getResult();
+        
+        return $articles;
+    }
+    
+    public function get5FromNewest()
+    {
+   	$query = $this->getEntityManager()->createQuery(
+		'SELECT a FROM CMSBundle:Article a ORDER BY a.id DESC');
+        
+        $articles = $query->setMaxResults(5)->getResult();
+        
+        return $articles;
+    }
+
 }

@@ -21,7 +21,7 @@ class ArticleController extends FOSRestController
     public function getArticlesAction()
     {
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
-        $articles = $repository->findAll();
+        $articles = $repository->get20FromNewest();
         
         if($articles === null) {
             return new View("There are no articles", Response::HTTP_NOT_FOUND);
@@ -29,6 +29,22 @@ class ArticleController extends FOSRestController
         
         return $articles;
     }
+    
+    /**
+     * @Rest\Get("/newestArticles")
+     */
+    public function getNewestArticlesAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
+        $articles = $repository->get5FromNewest();
+        
+        if($articles === null) {
+            return new View("There are no articles", Response::HTTP_NOT_FOUND);
+        }
+        
+        return $articles;
+    }
+
 
     /**
      * @Rest\Get("/articles/{id}")
