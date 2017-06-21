@@ -23,7 +23,7 @@ class PageController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Page');
         $pages = $repository->findAll();
         
-        if($pages === null) {
+        if(!$pages) {
             return new View("There are no pages", Response::HTTP_NOT_FOUND);
         }
         
@@ -38,7 +38,7 @@ class PageController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Page');
         $page = $repository->find($id);
 
-        if($page === null) {
+        if(!$page) {
             return new View("This page do not exist", Response::HTTP_NOT_FOUND);
         }
         
@@ -80,7 +80,7 @@ class PageController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Page');
         $page = $repository->find($id);
         
-        if($page === null) {
+        if(!$page) {
             return new View("This page do not exist", Response::HTTP_NOT_FOUND);
         }
 
@@ -97,7 +97,7 @@ class PageController extends FOSRestController
     /**
      * @Rest\Delete("/pages/{id}")
     */
-    public function deleteArticleAction($id)
+    public function deletePageAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -113,8 +113,5 @@ class PageController extends FOSRestController
         
         return new View("Page deleted successfully", Response::HTTP_OK);
     }
-
-    
-    
 
 }

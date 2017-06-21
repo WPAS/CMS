@@ -23,7 +23,7 @@ class ArticleController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
         $articles = $repository->getSomeFromNewest(20);
         
-        if($articles === null) {
+        if(!$articles) {
             return new View("There are no articles", Response::HTTP_NOT_FOUND);
         }
         
@@ -38,7 +38,7 @@ class ArticleController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
         $articles = $repository->getSomeFromNewest(3);
         
-        if($articles === null) {
+        if(!$articles) {
             return new View("There are no articles", Response::HTTP_NOT_FOUND);
         }
         
@@ -54,7 +54,7 @@ class ArticleController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
         $article = $repository->find($id);
 
-        if($article === null) {
+        if(!$article) {
             return new View("This article do not exist", Response::HTTP_NOT_FOUND);
         }
         
@@ -119,7 +119,7 @@ class ArticleController extends FOSRestController
         $repository = $this->getDoctrine()->getRepository('CMSBundle:Article');
         $article = $repository->find($id);
         
-        if($article === null) {
+        if(!$article) {
             return new View("This article do not exist", Response::HTTP_NOT_FOUND);
         }
 
